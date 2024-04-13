@@ -29,6 +29,7 @@ export default function Home() {
             key={index}
             image_url={e.image_url}
             title={e.title}
+            description={e.description}
             price={e.price}
           />
         ))}
