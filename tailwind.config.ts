@@ -20,25 +20,19 @@ const config: Config = {
       container: {
         center: true,
         screens: {
-          xl: "1200px",
+          xl: "1000px",
         },
       },
       fontSize: {
         h1: "40px",
-        h2: "32px",
+        h2: "36px",
         h3: "24px",
         h4: "16px",
         h5: "12px",
         h6: "10px",
       },
-      boxShadow: {
-        "3xl": " 0 13px 19px 0 rgba(0, 0, 0, 0.07);",
-      },
       fontFamily: {
         geometria: ["Geometria", "sans-serif"],
-      },
-      backgroundImage: {
-        "new-arrivals": "url(/img/new-arrivals.png)",
       },
       colors: colorsTW,
     },
