@@ -12,13 +12,17 @@ export default function Home() {
     isLoading: productIsLoading,
     isError: productIsError,
   } = useProducts(1, 20);
-  const { reviews, isLoading, isError } = useReviews();
+  const {
+    reviews,
+    isLoading: reviewsIsLoading,
+    isError: reviewsError,
+  } = useReviews();
 
-  if (isLoading) {
+  if (productIsLoading) {
     return <div>Loading reviews...</div>;
   }
 
-  if (isError) {
+  if (productIsError) {
     return <div>Error fetching reviews</div>;
   }
 
