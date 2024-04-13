@@ -1,8 +1,4 @@
-export interface Review {
+export interface Reviews {
   id: number;
   text: string;
-}
-
-export interface ReviewsResponse {
-  Review: [];
 }

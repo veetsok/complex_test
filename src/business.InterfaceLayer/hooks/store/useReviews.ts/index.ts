@@ -1,7 +1,7 @@
 // useReviews.ts
 import { useQuery } from "react-query";
 import { useMemo } from "react";
-import { ReviewsResponse } from "./type";
+import { Reviews } from "./type";
 
 const baseUrl = "http://o-complex.com:1337/reviews";
 
@@ -10,7 +10,7 @@ export function useReviews() {
     data: reviews,
     isLoading,
     isError,
-  } = useQuery<ReviewsResponse>("reviews", async () => {
+  } = useQuery<Reviews[]>("reviews", async () => {
     const response = await fetch(baseUrl);
     if (!response.ok) {
       throw new Error("Failed to fetch reviews");

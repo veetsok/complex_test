@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <main className={`${globalContainer}`}>
-      <ReviewsWidget />
+      <ReviewsWidget items={reviews} />
       <CartWidget />
       <div
         className={`grid grid-cols-3 gap-7 mt-10 ${heightChild.height_rowCustom}`}

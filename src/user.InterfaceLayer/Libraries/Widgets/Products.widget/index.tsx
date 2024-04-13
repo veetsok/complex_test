@@ -1,11 +1,11 @@
 import React, { useMemo } from "react";
-import CardBlock from "../../UI_KIT/Organisms/CardBlock.widget";
 import { ProductsWidgetProps } from "./type";
+import CardBlockOrganisms from "../../UI_KIT/Organisms/CardBlock.organisms";
 
 const ProductsWidget: React.FC<ProductsWidgetProps> = ({ products }) => {
   const memoizedProducts = useMemo(() => {
     return products?.products.map((product, index) => (
-      <CardBlock
+      <CardBlockOrganisms
         key={index}
         image_url={product.image_url}
         title={product.title}

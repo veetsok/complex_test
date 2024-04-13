@@ -1,12 +1,18 @@
 import React, { useMemo } from "react";
+import ReviewBlock from "../../UI_KIT/Organisms/ReviewBlock.organisms";
+import { Reviews } from "@/business.InterfaceLayer/hooks/store/useReviews.ts/type";
 
 interface ReviewsWidgetProps {
-  items?: any;
+  items?: Reviews[];
 }
 
 const ReviewsWidget: React.FC<ReviewsWidgetProps> = (props) => {
   const { items } = props;
-  const memoizedItems = useMemo(() => items, [items]);
+  const memoizedItems = useMemo(() => {
+    return items?.map((item, index) => (
+      <ReviewBlock key={index} text={item.text} />
+    ));
+  }, [items]);
 
   return <>{memoizedItems}</>;
 };
