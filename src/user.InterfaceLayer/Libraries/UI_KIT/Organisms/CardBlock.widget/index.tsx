@@ -5,14 +5,7 @@ import TextAtomEnum from "../../Atoms/Text.Atom/enum";
 import ButtonAtom from "../../Atoms/Button.Atom";
 import ButtonAtomEnum from "../../Atoms/Button.Atom/enum";
 import { sanitize, truncateText } from "./utils";
-
-interface CardBlockProps {
-  image_url?: string;
-  title?: string;
-  description?: string;
-  price?: number;
-  onClick?: () => void;
-}
+import { CardBlockProps } from "./type";
 
 const MAX_TITLE_LENGTH = 50;
 const MAX_DESCRIPTION_LENGTH = 150;

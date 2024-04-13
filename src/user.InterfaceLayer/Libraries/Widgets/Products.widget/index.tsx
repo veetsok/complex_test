@@ -1,10 +1,6 @@
 import React, { useMemo } from "react";
 import CardBlock from "../../UI_KIT/Organisms/CardBlock.widget";
-import { ProductsResponse } from "@/business.InterfaceLayer/hooks/store/useProducts/type";
-
-interface ProductsWidgetProps {
-  products?: ProductsResponse;
-}
+import { ProductsWidgetProps } from "./type";
 
 const ProductsWidget: React.FC<ProductsWidgetProps> = ({ products }) => {
   const memoizedProducts = useMemo(() => {
