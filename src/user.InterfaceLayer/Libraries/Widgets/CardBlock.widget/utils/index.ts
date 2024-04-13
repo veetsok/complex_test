@@ -12,8 +12,12 @@ export function sanitize(text: string | undefined | null): string {
     "=": "&#x3D;",
     "+": "&#x2B;",
     ";": "&#x3B;",
+    "(": "&#x28;",
+    ")": "&#x29;",
+    "{": "&#x7B;",
+    "}": "&#x7D;",
   };
-  const reg = /[&<>"'/`=+;]/gi;
+  const reg = /[&<>"'/`=+;(){}]/gi;
   return text.replace(reg, (match) => map[match]);
 }
 
@@ -22,5 +26,13 @@ export const truncateText = (
   maxLength: number
 ): string => {
   if (!text) return "";
-  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+  if (text.length <= maxLength) return text;
+
+  // Find the last space before maxLength
+  const lastSpaceIndex = text.lastIndexOf(" ", maxLength);
+  const truncatedText =
+    lastSpaceIndex !== -1
+      ? text.substring(0, lastSpaceIndex)
+      : text.substring(0, maxLength);
+  return truncatedText + "...";
 };
