@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { ProductsWidgetProps } from "./type";
 import CardBlockOrganisms from "../../UI_KIT/Organisms/CardBlock.organisms";
+import heightChild from "./styled/styles.module.css";
 
 const ProductsWidget: React.FC<ProductsWidgetProps> = ({ products }) => {
   const memoizedProducts = useMemo(() => {
@@ -15,7 +16,13 @@ const ProductsWidget: React.FC<ProductsWidgetProps> = ({ products }) => {
     ));
   }, [products]);
 
-  return <>{memoizedProducts}</>;
+  return (
+    <div
+      className={`grid grid-cols-3 gap-7 mt-10 ${heightChild.height_rowCustom}`}
+    >
+      {memoizedProducts}
+    </div>
+  );
 };
 
 export default React.memo(ProductsWidget);
