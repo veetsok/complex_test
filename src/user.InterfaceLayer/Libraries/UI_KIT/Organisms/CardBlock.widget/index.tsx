@@ -1,9 +1,9 @@
 import Image from "next/image";
-import React from "react";
-import TextAtom from "../../UI_KIT/Atoms/Text.Atom";
-import TextAtomEnum from "../../UI_KIT/Atoms/Text.Atom/enum";
-import ButtonAtom from "../../UI_KIT/Atoms/Button.Atom";
-import ButtonAtomEnum from "../../UI_KIT/Atoms/Button.Atom/enum";
+import React, { useCallback } from "react";
+import TextAtom from "../../Atoms/Text.Atom";
+import TextAtomEnum from "../../Atoms/Text.Atom/enum";
+import ButtonAtom from "../../Atoms/Button.Atom";
+import ButtonAtomEnum from "../../Atoms/Button.Atom/enum";
 import { sanitize, truncateText } from "./utils";
 
 interface CardBlockProps {
@@ -11,13 +11,18 @@ interface CardBlockProps {
   title?: string;
   description?: string;
   price?: number;
+  onClick?: () => void;
 }
 
 const MAX_TITLE_LENGTH = 50;
 const MAX_DESCRIPTION_LENGTH = 150;
 
 const CardBlock: React.FC<CardBlockProps> = (props) => {
-  const { image_url, title, description, price } = props;
+  const { image_url, title, description, price, onClick } = props;
+
+  const handleClick = useCallback(() => {
+    onClick?.();
+  }, [onClick]);
 
   return (
     <div className="grid grid-cols-[minmax(0,auto)] grid-rows-[auto auto auto minmax(0,100%)] py-[9px] px-[10px] bg-bgCard rounded-[15px] flex flex-col gap-2 h-full">
@@ -54,9 +59,14 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
       <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
         Цена: {price} ₽
       </TextAtom>
-      <ButtonAtom type={ButtonAtomEnum.enum_defaultButton}>Купить</ButtonAtom>
+      <ButtonAtom
+        onClick={handleClick}
+        type={ButtonAtomEnum.enum_defaultButton}
+      >
+        Купить
+      </ButtonAtom>
     </div>
   );
 };
 
-export default CardBlock;
+export default React.memo(CardBlock);
