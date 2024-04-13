@@ -1,7 +1,7 @@
-// utils/sanitize.js
-export function sanitize(text) {
-  if (!text) return ""; // Add a check for undefined or null text
-  const map = {
+// utils/sanitize.ts
+export function sanitize(text: string | undefined | null): string {
+  if (!text) return "";
+  const map: { [key: string]: string } = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
