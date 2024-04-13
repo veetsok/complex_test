@@ -17,9 +17,9 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
   const { image_url, title, description, price } = props;
 
   return (
-    <div className="grid grid-cols-[minmax(0,auto)] grid-rows-[auto auto auto minmax(0,100%)] py-[9px] px-[10px] bg-bgCard rounded-[15px] flex flex-col h-full">
+    <div className="grid grid-cols-[minmax(0,auto)] grid-rows-[auto auto auto minmax(0,100%)] py-[9px] px-[10px] bg-bgCard rounded-[15px] flex flex-col gap-2 h-full">
       <div className="overflow-hidden">
-        <div className="w-full h-[264px]">
+        <div className="w-300px h-[264px]">
           {image_url ? (
             <Image
               src={image_url}
@@ -36,10 +36,16 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
           )}
         </div>
       </div>
-      <TextAtom type={TextAtomEnum.enum_h4} className="mt-2">
+      <TextAtom
+        type={TextAtomEnum.enum_h4}
+        className="h-[40px] overflow-hidden"
+      >
         {sanitize(title)}
       </TextAtom>
-      <TextAtom type={TextAtomEnum.enum_h4} className="overflow-hidden">
+      <TextAtom
+        type={TextAtomEnum.enum_h4}
+        className="h-[80px] overflow-hidden"
+      >
         {sanitize(description)}
       </TextAtom>
       <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
