@@ -4,7 +4,7 @@ import TextAtom from "../../UI_KIT/Atoms/Text.Atom";
 import TextAtomEnum from "../../UI_KIT/Atoms/Text.Atom/enum";
 import ButtonAtom from "../../UI_KIT/Atoms/Button.Atom";
 import ButtonAtomEnum from "../../UI_KIT/Atoms/Button.Atom/enum";
-import { sanitize } from "./utils";
+import { sanitize, truncateText } from "./utils";
 
 interface CardBlockProps {
   image_url?: string;
@@ -13,13 +13,16 @@ interface CardBlockProps {
   price?: number;
 }
 
+const MAX_TITLE_LENGTH = 50;
+const MAX_DESCRIPTION_LENGTH = 150;
+
 const CardBlock: React.FC<CardBlockProps> = (props) => {
   const { image_url, title, description, price } = props;
 
   return (
     <div className="grid grid-cols-[minmax(0,auto)] grid-rows-[auto auto auto minmax(0,100%)] py-[9px] px-[10px] bg-bgCard rounded-[15px] flex flex-col gap-2 h-full">
       <div className="overflow-hidden">
-        <div className="w-300px h-[264px]">
+        <div className="w-full h-[264px]">
           {image_url ? (
             <Image
               src={image_url}
@@ -40,13 +43,13 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
         type={TextAtomEnum.enum_h4}
         className="h-[40px] overflow-hidden"
       >
-        {sanitize(title)}
+        {truncateText(sanitize(title), MAX_TITLE_LENGTH)}
       </TextAtom>
       <TextAtom
         type={TextAtomEnum.enum_h4}
         className="h-[80px] overflow-hidden"
       >
-        {sanitize(description)}
+        {truncateText(sanitize(description), MAX_DESCRIPTION_LENGTH)}
       </TextAtom>
       <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
         Цена: {price} ₽
