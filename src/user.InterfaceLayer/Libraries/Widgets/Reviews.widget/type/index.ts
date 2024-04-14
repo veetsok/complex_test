@@ -1,4 +1,4 @@
-import { Reviews } from "@/business.InterfaceLayer/hooks/store/useReviews.ts/type";
+import { Reviews } from "@/business.InterfaceLayer/hooks/store/useReviews/type";
 
 export interface ReviewsWidgetProps {
   items?: Reviews[];

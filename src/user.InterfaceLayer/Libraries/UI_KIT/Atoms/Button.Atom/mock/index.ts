@@ -3,7 +3,7 @@ import ButtonEnum from "../enum";
 const ButtonsMock = {
   children: "Демо",
   className: "",
-  type: ButtonEnum.enum_butButton,
+  type: ButtonEnum.enum_buyButton,
 };
 
 export default ButtonsMock;

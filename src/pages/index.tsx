@@ -1,8 +1,8 @@
 import { useProducts } from "@/business.InterfaceLayer/hooks/store/useProducts";
+import { useReviews } from "@/business.InterfaceLayer/hooks/store/useReviews";
 import CartWidget from "@/user.InterfaceLayer/Libraries/Widgets/Cart.widget";
 import { globalContainer } from "@/user.InterfaceLayer/constants/styles/CommonStyles";
 import ProductsWidget from "@/user.InterfaceLayer/Libraries/Widgets/Products.widget";
-import { useReviews } from "@/business.InterfaceLayer/hooks/store/useReviews.ts";
 import ReviewsWidget from "@/user.InterfaceLayer/Libraries/Widgets/Reviews.widget";
 
 export default function Home() {
