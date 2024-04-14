@@ -34,7 +34,7 @@ const CartWidget: React.FC<CartWidgetProps> = () => {
         <>
           <TextAtom type={TextAtomEnum.enum_h2}>Добавленные товары</TextAtom>
           <div className="flex gap-[40px]">
-            <div className="flex flex-col">{memoizedItems}</div>
+            <div className="flex flex-col gap-3">{memoizedItems}</div>
             <TextAtom type={TextAtomEnum.enum_h2}>{total}</TextAtom>
           </div>
           <CallNumber />

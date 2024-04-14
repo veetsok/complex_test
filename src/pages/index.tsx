@@ -10,7 +10,7 @@ export default function Home() {
     data: products,
     isLoading: productIsLoading,
     isError: productIsError,
-  } = useProducts(1, 20);
+  } = useProducts(1, 21);
   const {
     reviews,
     isLoading: reviewsIsLoading,
@@ -24,8 +24,6 @@ export default function Home() {
   if (productIsError) {
     return <div>Error fetching reviews</div>;
   }
-
-  console.log(products);
 
   return (
     <main className={`${globalContainer}`}>
