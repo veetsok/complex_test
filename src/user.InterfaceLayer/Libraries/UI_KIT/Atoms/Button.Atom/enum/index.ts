@@ -1,6 +1,5 @@
 enum ButtonAtomEnum {
-  "enum_butButton" = "butButton",
-  "enum_defaultButton" = "defaultButton",
+  "enum_buyButton" = "buyButton",
 }
 
 export default ButtonAtomEnum;

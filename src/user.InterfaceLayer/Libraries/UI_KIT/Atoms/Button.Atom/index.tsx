@@ -15,7 +15,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
   }
 
   switch (type) {
-    case ButtonAtomEnum.enum_butButton: {
+    case ButtonAtomEnum.enum_buyButton: {
       return (
         <button
           onClick={(e) => {
@@ -23,7 +23,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
             e.preventDefault();
             onClick?.(e);
           }}
-          className={`${className} inline-block bg-tiffany rounded-md w-full py-3 hover:bg-bg_hover active:bg-bg_active`}
+          className={`${className} inline-block bg-black rounded-md w-full py-3 hover:bg-bg_hover active:bg-bg_active`}
         >
           <TextAtom
             className="peer font-bold mx-auto text-white leading-relaxed uppercase"
@@ -31,22 +31,6 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
           >
             {children}
           </TextAtom>
-        </button>
-      );
-    }
-    case ButtonAtomEnum.enum_defaultButton: {
-      return (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            onClick?.(e);
-          }}
-          style={style}
-          disabled={disabled}
-          className={`${className} inline-block cursor-pointer`}
-        >
-          {children}
         </button>
       );
     }

@@ -52,10 +52,7 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
       <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
         Цена: {price} ₽
       </TextAtom>
-      <ButtonAtom
-        onClick={handleClick}
-        type={ButtonAtomEnum.enum_defaultButton}
-      >
+      <ButtonAtom onClick={handleClick} type={ButtonAtomEnum.enum_buyButton}>
         Купить
       </ButtonAtom>
     </div>
