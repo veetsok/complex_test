@@ -80,35 +80,38 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
       <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
         Цена: {price?.toLocaleString()} ₽
       </TextAtom>
-      <div className="flex gap-2 items-center">
+      {quantity < 1 ? (
         <ButtonAtom
-          onClick={handleDecreaseQuantity}
+          onClick={handleAddToCart}
           type={ButtonAtomEnum.enum_buyButton}
         >
-          <TextAtom type={TextAtomEnum.enum_h2}>-</TextAtom>
+          Купить
         </ButtonAtom>
-        <div className="inline-flex justify-center bg-black rounded-md max-w-[150px]">
-          <InputAtom
-            type={InputAtomEnum.NUMBER}
-            className="h-[60px] hover:bg-bg_hover active:bg-bg_active text-white w-full text-center bg-transparent text-h3"
-            value={Number(quantity)}
-            onChange={handleQuantityChange}
-          />
-        </div>
+      ) : (
+        <div className="flex gap-2 items-center">
+          <ButtonAtom
+            onClick={handleDecreaseQuantity}
+            type={ButtonAtomEnum.enum_buyButton}
+          >
+            <TextAtom type={TextAtomEnum.enum_h2}>-</TextAtom>
+          </ButtonAtom>
+          <div className="inline-flex justify-center bg-black rounded-md max-w-[150px]">
+            <InputAtom
+              type={InputAtomEnum.NUMBER}
+              className="h-[60px] hover:bg-bg_hover active:bg-bg_active text-white w-full text-center bg-transparent text-h3"
+              value={Number(quantity)}
+              onChange={handleQuantityChange}
+            />
+          </div>
 
-        <ButtonAtom
-          onClick={handleIncreaseQuantity}
-          type={ButtonAtomEnum.enum_buyButton}
-        >
-          <TextAtom type={TextAtomEnum.enum_h2}>+</TextAtom>
-        </ButtonAtom>
-      </div>
-      <ButtonAtom
-        onClick={handleAddToCart}
-        type={ButtonAtomEnum.enum_buyButton}
-      >
-        Купить
-      </ButtonAtom>
+          <ButtonAtom
+            onClick={handleIncreaseQuantity}
+            type={ButtonAtomEnum.enum_buyButton}
+          >
+            <TextAtom type={TextAtomEnum.enum_h2}>+</TextAtom>
+          </ButtonAtom>
+        </div>
+      )}
     </div>
   );
 };
