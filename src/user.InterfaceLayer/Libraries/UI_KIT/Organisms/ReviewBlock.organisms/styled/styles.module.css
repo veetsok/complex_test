@@ -1,0 +1,6 @@
+.rewiew p:last-child {
+  height: 80px;
+}
+
+@media not all and (min-width: 1024px) {
+}
