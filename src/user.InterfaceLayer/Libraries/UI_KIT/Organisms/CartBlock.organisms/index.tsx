@@ -5,19 +5,17 @@ import TextAtomEnum from "../../Atoms/Text.Atom/enum";
 interface CartBlockProps {
   title?: string;
   count?: number;
-  price?: number;
+  sum?: number;
 }
 
 const CartBlock: React.FC<CartBlockProps> = (props) => {
-  const { title, count, price } = props;
+  const { title, count, sum } = props;
 
   return (
     <div className="flex">
       <TextAtom type={TextAtomEnum.enum_h3}>{title}</TextAtom>
       <TextAtom type={TextAtomEnum.enum_h3}>{count}</TextAtom>
-      <TextAtom type={TextAtomEnum.enum_h3}>
-        {price?.toLocaleString()} ₽
-      </TextAtom>
+      <TextAtom type={TextAtomEnum.enum_h3}>{sum?.toLocaleString()} ₽</TextAtom>
     </div>
   );
 };

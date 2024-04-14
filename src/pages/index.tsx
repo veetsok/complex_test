@@ -25,7 +25,7 @@ export default function Home() {
     return <div>Error fetching reviews</div>;
   }
 
-  console.log(reviews);
+  console.log(products);
 
   return (
     <main className={`${globalContainer}`}>

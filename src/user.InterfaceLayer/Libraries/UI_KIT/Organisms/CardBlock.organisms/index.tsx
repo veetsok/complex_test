@@ -6,16 +6,25 @@ import ButtonAtom from "../../Atoms/Button.Atom";
 import ButtonAtomEnum from "../../Atoms/Button.Atom/enum";
 import { sanitize, truncateText } from "./utils";
 import { CardBlockProps } from "./type";
+import useCartStore from "@/business.InterfaceLayer/hooks/store/localstorage/useCartStore";
 
 const MAX_TITLE_LENGTH = 50;
 const MAX_DESCRIPTION_LENGTH = 150;
 
 const CardBlock: React.FC<CardBlockProps> = (props) => {
-  const { image_url, title, description, price, onClick } = props;
+  const { image_url, title, description, price, id } = props;
+  const { addItem } = useCartStore();
 
-  const handleClick = useCallback(() => {
-    onClick?.();
-  }, [onClick]);
+  const handleAddToCart = useCallback(() => {
+    const newItem = {
+      id: id,
+      title: title,
+      price: price,
+      quantity: 1,
+      sum: 0,
+    };
+    addItem(newItem);
+  }, [addItem, id, price, title]);
 
   return (
     <div className="grid grid-cols-[minmax(0,auto)] grid-rows-[auto auto auto minmax(0,100%)] py-[9px] px-[10px] bg-bgCard rounded-[15px] flex flex-col gap-2 h-full">
@@ -50,9 +59,12 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
         {truncateText(sanitize(description), MAX_DESCRIPTION_LENGTH)}
       </TextAtom>
       <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
-        Цена: {price} ₽
+        Цена: {price?.toLocaleString()} ₽
       </TextAtom>
-      <ButtonAtom onClick={handleClick} type={ButtonAtomEnum.enum_buyButton}>
+      <ButtonAtom
+        onClick={handleAddToCart}
+        type={ButtonAtomEnum.enum_buyButton}
+      >
         Купить
       </ButtonAtom>
     </div>
