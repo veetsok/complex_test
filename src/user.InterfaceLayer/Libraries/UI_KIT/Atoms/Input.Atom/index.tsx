@@ -1,12 +1,7 @@
 import React, { useCallback } from "react";
 import { InputAtomProps } from "./type";
 import { InputAtomEnum } from "./enum";
-import {
-  checkboxStyle,
-  inputStyle,
-  radioStyle,
-  rangeStyle,
-} from "./styles/styled";
+import { inputStyle } from "./styles/styled";
 import { InputMask, checkType } from "./utils";
 import { IInputAtomDefaultProps } from "./mock";
 
@@ -23,14 +18,7 @@ const InputAtom: React.FC<InputAtomProps> = (props) => {
     ...otherProps
   } = props;
 
-  const additionalClass =
-  type === InputAtomEnum.RANGE
-    ? rangeStyle
-    : type === InputAtomEnum.CHECKBOX
-    ? checkboxStyle
-    : type === InputAtomEnum.RADIO
-    ? radioStyle
-    : inputStyle;
+  const additionalClass = inputStyle;
 
   const onChangeHandler = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

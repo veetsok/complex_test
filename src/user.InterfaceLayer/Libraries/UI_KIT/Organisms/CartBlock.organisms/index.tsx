@@ -12,8 +12,13 @@ const CartBlock: React.FC<CartBlockProps> = (props) => {
   const { title, count, sum } = props;
 
   return (
-    <div className="flex">
-      <TextAtom type={TextAtomEnum.enum_h3}>{title}</TextAtom>
+    <div className="flex gap-8 max-w-[425px]">
+      <TextAtom
+        type={TextAtomEnum.enum_h3}
+        className="max-w-[250px] overflow-hidden"
+      >
+        {title}
+      </TextAtom>
       <TextAtom type={TextAtomEnum.enum_h3}>{count}</TextAtom>
       <TextAtom type={TextAtomEnum.enum_h3}>{sum?.toLocaleString()} ₽</TextAtom>
     </div>
