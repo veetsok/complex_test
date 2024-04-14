@@ -1,5 +1,5 @@
 .height_rowCustom {
-  grid-auto-rows: 450px;
+  grid-auto-rows: 470px;
 }
 
 @media not all and (min-width: 1024px) {

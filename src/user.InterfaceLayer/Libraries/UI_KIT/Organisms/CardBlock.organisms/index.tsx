@@ -84,8 +84,9 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
         <ButtonAtom
           onClick={handleAddToCart}
           type={ButtonAtomEnum.enum_buyButton}
+          className="h-[60px]"
         >
-          Купить
+          <TextAtom type={TextAtomEnum.enum_h3}>Купить</TextAtom>
         </ButtonAtom>
       ) : (
         <div className="flex gap-2 items-center">

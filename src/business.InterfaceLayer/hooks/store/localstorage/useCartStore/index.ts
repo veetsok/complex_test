@@ -34,20 +34,24 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
           const existItemIndex = state.items.findIndex(
             (item) => item.id === newItem.id
           );
+          let updatedItems;
           if (existItemIndex !== -1) {
-            const updatedItems = [...state.items];
+            updatedItems = [...state.items];
             updatedItems[existItemIndex].quantity += newItem.quantity;
             updatedItems[existItemIndex].sum +=
               newItem.price * newItem.quantity;
-            return {
-              items: updatedItems,
-            };
           } else {
             const sum = newItem.price * newItem.quantity;
-            return {
-              items: [...state.items, { ...newItem, sum }],
-            };
+            updatedItems = [...state.items, { ...newItem, sum }];
           }
+
+          // Calculate total sum
+          const total = updatedItems.reduce((acc, item) => acc + item.sum, 0);
+
+          return {
+            items: updatedItems,
+            total,
+          };
         }),
       updateItemQuantity: (id, quantity) =>
         set((state) => {
@@ -56,8 +60,13 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
               ? { ...item, quantity, sum: item.price * quantity }
               : item
           );
+
+          // Calculate total sum
+          const total = updatedItems.reduce((acc, item) => acc + item.sum, 0);
+
           return {
             items: updatedItems,
+            total,
           };
         }),
       increaseQuantity: (id) =>
@@ -71,8 +80,13 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
                 }
               : item
           );
+
+          // Calculate total sum
+          const total = updatedItems.reduce((acc, item) => acc + item.sum, 0);
+
           return {
             items: updatedItems,
+            total,
           };
         }),
       decreaseQuantity: (id) =>
@@ -88,8 +102,13 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
                 : item
             )
             .filter((item) => item.quantity > 0); // Remove items with quantity <= 0
+
+          // Calculate total sum
+          const total = updatedItems.reduce((acc, item) => acc + item.sum, 0);
+
           return {
             items: updatedItems,
+            total,
           };
         }),
 
