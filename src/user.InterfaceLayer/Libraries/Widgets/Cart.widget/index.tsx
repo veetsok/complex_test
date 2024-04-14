@@ -23,7 +23,7 @@ const CartWidget: React.FC<CartWidgetProps> = () => {
 
   return (
     <div className="rounded-[15px] bg-bgCard py-[10px] px-3 flex flex-col gap-5 max-w-[708px] my-0 mx-auto">
-      {!items ? (
+      {items.length === 0 ? (
         <div className="text-center flex flex-col gap-5">
           <TextAtom type={TextAtomEnum.enum_h3}>Корзина пока пуста!</TextAtom>
           <TextAtom type={TextAtomEnum.enum_h3}>
