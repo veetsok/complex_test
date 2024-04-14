@@ -1,4 +1,3 @@
-// CallNumber.tsx
 import React, { useCallback, useState } from "react";
 import ButtonAtom from "../../Atoms/Button.Atom";
 import ButtonAtomEnum from "../../Atoms/Button.Atom/enum";
@@ -17,52 +16,72 @@ const CallNumber: React.FC<CallNumberProps> = () => {
   const { submitOrder } = useOrder();
 
   const [isShowModal, setIsShowModal] = useState(false);
-  const openModal = useCallback(() => {
-    setIsShowModal(true);
-  }, [setIsShowModal]);
+  const [phoneError, setPhoneError] = useState("");
 
   const handlePhoneChange = useCallback(
     (value: string) => {
       setPhoneNumber(value);
+      if (value.length < 12) {
+        setPhoneError("Пожалуйста, введите корректно телефонный номер");
+      } else {
+        setPhoneError("");
+      }
     },
     [setPhoneNumber]
   );
-  const handleSubmit = async () => {
-    if (phoneNumber.length !== 11) {
+
+  const handleSubmit = useCallback(() => {
+    if (phoneNumber.length !== 12) {
+      setPhoneError("Пожалуйста, введите корректно телефонный номер");
       return;
     }
-    try {
-      const cart = items.map(({ id, quantity }) => ({ id, quantity }));
-      await submitOrder(phoneNumber, cart);
-      alert("Order submitted successfully!");
-      clearCart();
-    } catch (error) {
-      console.error("Error submitting order:", error);
-      alert("Failed to submit order. Please try again.");
-    }
-  };
+    const cart = items.map(({ id, quantity }) => ({ id, quantity }));
+    submitOrder(phoneNumber.substring(1), cart);
+    clearCart();
+    setIsShowModal(true);
+  }, [phoneNumber, items, submitOrder, clearCart, setIsShowModal]);
 
   return (
     <>
-      {isShowModal && <ModalWindow close={setIsShowModal} />}
-      <div className="flex justify-between">
-        <div className="flex items-center bg-black gap-5 rounded-[15px] py-2 px-4 max-w-[400px]">
-          <InputAtom
-            type={InputAtomEnum.TEL}
-            value={phoneNumber}
-            onChange={handlePhoneChange}
-            placeholder="+7 (___) ___-__-__"
-          />
+      {isShowModal && (
+        <ModalWindow
+          close={() => {
+            setIsShowModal(false);
+          }}
+        />
+      )}
+      <div className="flex flex-col gap-3">
+        {phoneError && (
+          <TextAtom type={TextAtomEnum.enum_h3} className="text-red-500">
+            {phoneError}
+          </TextAtom>
+        )}
+        <div className="flex justify-between">
+          <div
+            className={
+              phoneError
+                ? "border boder-solid border-red-500 flex items-center bg-black gap-5 rounded-[15px] py-2 px-4 max-w-[400px]"
+                : "flex items-center bg-black gap-5 rounded-[15px] py-2 px-4 max-w-[400px]"
+            }
+          >
+            <InputAtom
+              type={InputAtomEnum.TEL}
+              value={phoneNumber}
+              onChange={handlePhoneChange}
+              placeholder="+7 (___) ___-__-__"
+            />
+          </div>
+          <ButtonAtom
+            className="max-w-[268px]"
+            type={ButtonAtomEnum.enum_buyButton}
+            onClick={handleSubmit}
+          >
+            <TextAtom type={TextAtomEnum.enum_h3}>Заказать</TextAtom>
+          </ButtonAtom>
         </div>
-        <ButtonAtom
-          className="max-w-[268px]"
-          type={ButtonAtomEnum.enum_buyButton}
-          onClick={openModal}
-        >
-          <TextAtom type={TextAtomEnum.enum_h3}>Заказать</TextAtom>
-        </ButtonAtom>
       </div>
     </>
   );
 };
+
 export default React.memo(CallNumber);
