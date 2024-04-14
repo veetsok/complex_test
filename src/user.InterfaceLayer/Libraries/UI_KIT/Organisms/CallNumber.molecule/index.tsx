@@ -39,4 +39,4 @@ const CallNumber: React.FC<CallNumberProps> = () => {
     </div>
   );
 };
-export default CallNumber;
+export default React.memo(CallNumber);
