@@ -66,7 +66,7 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
             item.id === id
               ? {
                   ...item,
-                  quantity: item.quantity + 1,
+                  quantity: Number(item.quantity) + 1,
                   sum: item.sum + item.price,
                 }
               : item
