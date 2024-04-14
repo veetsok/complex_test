@@ -1,15 +1,14 @@
-import React, { useCallback, useState } from "react";
-import TextAtom from "../../Atoms/Text.Atom";
-import TextAtomEnum from "../../Atoms/Text.Atom/enum";
+import React, { useCallback } from "react";
 import ButtonAtom from "../../Atoms/Button.Atom";
 import ButtonAtomEnum from "../../Atoms/Button.Atom/enum";
 import InputAtom from "../../Atoms/Input.Atom";
 import { InputAtomEnum } from "../../Atoms/Input.Atom/enum";
+import useCartStore from "@/business.InterfaceLayer/hooks/store/localstorage/useCartStore";
 
 interface CallNumberProps {}
 
 const CallNumber: React.FC<CallNumberProps> = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const { phoneNumber, setPhoneNumber } = useCartStore();
 
   const handlePhoneChange = useCallback(
     (value: string) => {

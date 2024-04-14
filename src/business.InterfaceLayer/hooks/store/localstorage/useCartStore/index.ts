@@ -11,6 +11,8 @@ interface CartStoreItems {
 export interface CartStore {
   items: CartStoreItems[];
   total: number;
+  phoneNumber: string;
+  setPhoneNumber: (phoneNumber: string) => void;
 }
 export interface ActionsCartStore {
   addItem: (newItem: CartStoreItems) => void;
@@ -24,6 +26,8 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
     (set) => ({
       items: [],
       total: 0,
+      phoneNumber: "",
+      setPhoneNumber: (phoneNumber) => set({ phoneNumber }),
       addItem: (newItem) =>
         set((state) => {
           const existItemIndex = state.items.findIndex(
