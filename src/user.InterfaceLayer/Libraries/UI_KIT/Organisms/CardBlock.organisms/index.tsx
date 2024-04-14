@@ -13,18 +13,22 @@ const MAX_DESCRIPTION_LENGTH = 150;
 
 const CardBlock: React.FC<CardBlockProps> = (props) => {
   const { image_url, title, description, price, id } = props;
-  const { addItem } = useCartStore();
+  const { addItem, increaseQuantity, decreaseQuantity, items } = useCartStore();
+
+  const item = items.find((item) => item.id === id);
+  const quantity = item ? item.quantity : 0;
 
   const handleAddToCart = useCallback(() => {
-    const newItem = {
-      id: id,
-      title: title,
-      price: price,
-      quantity: 1,
-      sum: 0,
-    };
-    addItem(newItem);
-  }, [addItem, id, price, title]);
+    addItem({ id, title, price, quantity: 1, sum: 0 });
+  }, [addItem, id, title, price]);
+
+  const handleIncreaseQuantity = useCallback(() => {
+    increaseQuantity(id);
+  }, [increaseQuantity, id]);
+
+  const handleDecreaseQuantity = useCallback(() => {
+    decreaseQuantity(id);
+  }, [decreaseQuantity, id]);
 
   return (
     <div className="grid grid-cols-[minmax(0,auto)] grid-rows-[auto auto auto minmax(0,100%)] py-[9px] px-[10px] bg-bgCard rounded-[15px] flex flex-col gap-2 h-full">
@@ -33,14 +37,14 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
           {image_url ? (
             <Image
               src={image_url}
-              alt={"image"}
+              alt="image"
               className="max-w-full max-h-full object-contain"
               width={281}
               height={280}
               layout="responsive"
             />
           ) : (
-            <TextAtom type={TextAtomEnum.enum_h4} className="">
+            <TextAtom type={TextAtomEnum.enum_h4}>
               Ошибка загрузки картинки
             </TextAtom>
           )}
@@ -61,6 +65,21 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
       <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
         Цена: {price?.toLocaleString()} ₽
       </TextAtom>
+      <ButtonAtom
+        onClick={handleDecreaseQuantity}
+        type={ButtonAtomEnum.enum_buyButton}
+      >
+        -
+      </ButtonAtom>
+      <TextAtom type={TextAtomEnum.enum_h3} className="text-textWhite">
+        Count {quantity}
+      </TextAtom>
+      <ButtonAtom
+        onClick={handleIncreaseQuantity}
+        type={ButtonAtomEnum.enum_buyButton}
+      >
+        +
+      </ButtonAtom>
       <ButtonAtom
         onClick={handleAddToCart}
         type={ButtonAtomEnum.enum_buyButton}
