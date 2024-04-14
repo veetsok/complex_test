@@ -1,13 +1,10 @@
 import React from "react";
 import { sanitizeReview } from "./utils";
 import rewiewStyle from "./styled/styles.module.css";
-interface ReviewBlockProps {
-  text?: string;
-  id?: number;
-}
+import { ReviewBlockProps } from "./type";
 
 const ReviewBlock: React.FC<ReviewBlockProps> = (props) => {
-  const { text, id } = props;
+  const { text } = props;
 
   if (!text) return "Demo";
   const sanitizedText = sanitizeReview(text);
@@ -16,10 +13,9 @@ const ReviewBlock: React.FC<ReviewBlockProps> = (props) => {
     <>
       <div
         className={`grid grid-cols-[minmax(0,auto)] grid-rows-[auto auto auto minmax(0,100%)] py-[15px] px-[25px] flex flex-col bg-bgCard roundex-[15px] ${rewiewStyle.rewiew}`}
-        key={id}
         dangerouslySetInnerHTML={{ __html: sanitizedText }}
       />
     </>
   );
 };
-export default ReviewBlock;
+export default React.memo(ReviewBlock);

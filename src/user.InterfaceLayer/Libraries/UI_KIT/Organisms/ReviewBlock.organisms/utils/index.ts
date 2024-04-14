@@ -1,4 +1,3 @@
-// utils/sanitize.ts
 export const sanitizeReview = (text: string | undefined): string => {
   if (!text) return "";
 

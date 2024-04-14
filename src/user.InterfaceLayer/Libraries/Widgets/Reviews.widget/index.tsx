@@ -1,11 +1,7 @@
 import React, { useMemo } from "react";
 import ReviewBlock from "../../UI_KIT/Organisms/ReviewBlock.organisms";
-import { Reviews } from "@/business.InterfaceLayer/hooks/store/useReviews.ts/type";
 import heightChild from "./styled/styles.module.css";
-
-interface ReviewsWidgetProps {
-  items?: Reviews[];
-}
+import { ReviewsWidgetProps } from "./type";
 
 const ReviewsWidget: React.FC<ReviewsWidgetProps> = (props) => {
   const { items } = props;
@@ -17,7 +13,7 @@ const ReviewsWidget: React.FC<ReviewsWidgetProps> = (props) => {
 
   return (
     <div
-      className={`grid grid-cols-3 gap-7 mt-10 ${heightChild.height_rowCustom}`}
+      className={`grid grid-cols-3 gap-7 mb-[50px] ${heightChild.height_rowCustom}`}
     >
       {memoizedItems}
     </div>
