@@ -77,19 +77,22 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
         }),
       decreaseQuantity: (id) =>
         set((state) => {
-          const updatedItems = state.items.map((item) =>
-            item.id === id && item.quantity > 1
-              ? {
-                  ...item,
-                  quantity: item.quantity - 1,
-                  sum: item.sum - item.price,
-                }
-              : item
-          );
+          const updatedItems = state.items
+            .map((item) =>
+              item.id === id && item.quantity > 0
+                ? {
+                    ...item,
+                    quantity: item.quantity - 1,
+                    sum: item.sum - item.price,
+                  }
+                : item
+            )
+            .filter((item) => item.quantity > 0); // Remove items with quantity <= 0
           return {
             items: updatedItems,
           };
         }),
+
       clearCart: () => set({ items: [], phoneNumber: "", total: 0 }),
     }),
     {
