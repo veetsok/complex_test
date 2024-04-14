@@ -19,6 +19,7 @@ export interface ActionsCartStore {
   updateItemQuantity: (id: number, quantity: number) => void;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
+  clearCart: () => void;
 }
 
 const useCartStore = create<CartStore & ActionsCartStore>()(
@@ -89,6 +90,7 @@ const useCartStore = create<CartStore & ActionsCartStore>()(
             items: updatedItems,
           };
         }),
+      clearCart: () => set({ items: [], phoneNumber: "", total: 0 }),
     }),
     {
       name: "cart-storage",
