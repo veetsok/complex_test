@@ -35,21 +35,22 @@ const CallNumber: React.FC<CallNumberProps> = () => {
       setPhoneError("Пожалуйста, введите корректно телефонный номер");
       return;
     }
+
     const cart = items.map(({ id, quantity }) => ({ id, quantity }));
+
     submitOrder(phoneNumber.substring(1), cart);
-    clearCart();
     setIsShowModal(true);
-  }, [phoneNumber, items, submitOrder, clearCart, setIsShowModal]);
+  }, [items, phoneNumber, submitOrder]);
+
+  // Close modal and clear cart
+  const closeModalAndClearCart = useCallback(() => {
+    setIsShowModal(false);
+    clearCart(); // Clear the cart only after the modal is closed
+  }, [clearCart, setIsShowModal]);
 
   return (
     <>
-      {isShowModal && (
-        <ModalWindow
-          close={() => {
-            setIsShowModal(false);
-          }}
-        />
-      )}
+      {isShowModal && <ModalWindow close={closeModalAndClearCart} />}
       <div className="flex flex-col gap-3">
         {phoneError && (
           <TextAtom type={TextAtomEnum.enum_h3} className="text-red-500">
