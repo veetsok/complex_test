@@ -7,6 +7,8 @@ import { InputAtomEnum } from "../../Atoms/Input.Atom/enum";
 import useCartStore from "@/business.InterfaceLayer/hooks/store/localstorage/useCartStore";
 import { useOrder } from "@/business.InterfaceLayer/hooks/store/useOrder";
 import ModalWindow from "../../Cells/ModalWindow.cells";
+import TextAtom from "../../Atoms/Text.Atom";
+import TextAtomEnum from "../../Atoms/Text.Atom/enum";
 
 interface CallNumberProps {}
 
@@ -40,8 +42,6 @@ const CallNumber: React.FC<CallNumberProps> = () => {
     }
   };
 
-  console.log("79163452487".length);
-
   return (
     <>
       {isShowModal && <ModalWindow close={setIsShowModal} />}
@@ -59,7 +59,7 @@ const CallNumber: React.FC<CallNumberProps> = () => {
           type={ButtonAtomEnum.enum_buyButton}
           onClick={openModal}
         >
-          Заказать
+          <TextAtom type={TextAtomEnum.enum_h3}>Заказать</TextAtom>
         </ButtonAtom>
       </div>
     </>
