@@ -5,8 +5,7 @@ import { globalContainer } from "@/user.InterfaceLayer/constants/styles/CommonSt
 import ProductsWidget from "@/user.InterfaceLayer/Libraries/Widgets/Products.widget";
 import ReviewsWidget from "@/user.InterfaceLayer/Libraries/Widgets/Reviews.widget";
 import { useState } from "react";
-import ButtonAtom from "@/user.InterfaceLayer/Libraries/UI_KIT/Atoms/Button.Atom";
-import ButtonAtomEnum from "@/user.InterfaceLayer/Libraries/UI_KIT/Atoms/Button.Atom/enum";
+import Pagination from "@/user.InterfaceLayer/Libraries/Widgets/Pagination.widget";
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -22,28 +21,12 @@ export default function Home() {
     isError: reviewsError,
   } = useReviews();
 
-  const totalPages = products?.total ? Math.ceil(products.total / 21) : 0;
-
-  const handleGoToPage = (pageNumber: number) => setPage(pageNumber);
-
   return (
     <main className={`${globalContainer}`}>
       <ReviewsWidget isLoading={reviewsIsLoading} items={reviews} />
       <CartWidget />
       <ProductsWidget isLoading={productIsLoading} products={products} />
-      <div className="flex gap-3 mt-10">
-        {Array.from({ length: totalPages }, (_, index) => (
-          <ButtonAtom
-            key={index}
-            type={ButtonAtomEnum.enum_buyButton}
-            onClick={() => handleGoToPage(index + 1)}
-            disabled={page === index + 1}
-            className="max-w-[100px]"
-          >
-            {index + 1}
-          </ButtonAtom>
-        ))}
-      </div>
+      <Pagination />
     </main>
   );
 }
