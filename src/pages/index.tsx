@@ -11,8 +11,8 @@ import ButtonAtomEnum from "@/user.InterfaceLayer/Libraries/UI_KIT/Atoms/Button.
 export default function Home() {
   const [page, setPage] = useState(1);
   const {
-    data: products,
-    isLoading: productIsLoading = true,
+    products,
+    isLoading: productIsLoading,
     isError: productIsError,
     isFetching: productIsFetching,
   } = useProducts(page, 21);
