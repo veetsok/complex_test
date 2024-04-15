@@ -4,6 +4,7 @@ import TextAtomEnum from "../../Atoms/Text.Atom/enum";
 import ImageAtom from "../../Atoms/Image.Atom";
 import ImageEnum from "../../Atoms/Image.Atom/enum";
 import CloseIcon from "../../../shared/icons/close.svg?react";
+import mobile from "./styled/mobile.module.css";
 
 interface ModalWindowProps {
   close?: (val: boolean) => void;
@@ -22,7 +23,9 @@ const ModalWindow: React.FC<ModalWindowProps> = (props) => {
         className="absolute inset-[0] z-[-1] bg-bgModal"
         onClick={handleClickClose}
       ></div>
-      <div className="mx-5 max-h-[calc(100vh-48px)] relative w-[40%] bg-bgCard mx-5 p-6 rounded-[15px]">
+      <div
+        className={`${mobile.modal} mx-5 max-h-[calc(100vh-48px)] relative w-[40%] bg-bgCard mx-5 p-6 rounded-[15px]`}
+      >
         <ImageAtom
           type={ImageEnum.enum_defaultSvg}
           icon={<CloseIcon />}
