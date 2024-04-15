@@ -30,7 +30,7 @@ const ProductsWidget: React.FC<ProductsWidgetProps> = (props) => {
 
   return (
     <div
-      className={`grid grid-cols-3 gap-7 mt-10 ${heightChild.height_rowCustom}`}
+      className={`grid 2sm:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row gap-7 mt-10 ${heightChild.height_rowCustom}`}
     >
       {loadingCards}
       {memoizedProducts}

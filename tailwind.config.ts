@@ -16,6 +16,7 @@ const config: Config = {
         xl: "1280px",
         "2xl": "1400px",
         "2sm": "425px",
+        "3sm": "320px",
       },
       container: {
         center: true,
