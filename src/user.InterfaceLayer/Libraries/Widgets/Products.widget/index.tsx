@@ -10,7 +10,7 @@ const ProductsWidget: React.FC<ProductsWidgetProps> = (props) => {
     () =>
       isLoading &&
       Array.from({ length: 9 }).map((_, index) => (
-        <CardBlockOrganisms key={index} isLoading={true} />
+        <CardBlockOrganisms key={index} isLoading={isLoading} />
       )),
     [isLoading]
   );

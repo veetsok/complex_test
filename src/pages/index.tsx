@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <main className={`${globalContainer}`}>
-      <ReviewsWidget items={reviews} />
+      <ReviewsWidget isLoading={reviewsIsLoading} items={reviews} />
       <CartWidget />
       <ProductsWidget isLoading={productIsLoading} products={products} />
       <div className="flex gap-3 mt-10">
