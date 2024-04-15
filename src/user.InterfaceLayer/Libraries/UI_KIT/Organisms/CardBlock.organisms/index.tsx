@@ -118,7 +118,9 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
               -
             </TextAtom>
           </ButtonAtom>
-          <div className="inline-flex justify-center bg-black rounded-md max-w-[150px]">
+          <div
+            className={`${mobile.inputCount} inline-flex justify-center bg-black rounded-md max-w-[150px]`}
+          >
             <InputAtom
               isLoading={isLoading}
               type={InputAtomEnum.NUMBER}

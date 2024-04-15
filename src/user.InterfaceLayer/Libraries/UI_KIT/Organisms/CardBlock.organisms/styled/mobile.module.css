@@ -5,6 +5,9 @@
   .description {
     height: 50px;
   }
+  .inputCount {
+    height: 60px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -12,6 +15,15 @@
     height: 25px;
   }
   .description {
+    height: 40px;
+  }
+  .inputCount {
+    height: 50px;
+  }
+}
+
+@media (max-width: 425px) {
+  .inputCount {
     height: 40px;
   }
 }
