@@ -26,12 +26,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
           }}
           className={`${className} inline-block bg-black rounded-[15px] w-full py-3 ${mobile.btn} hover:bg-bg_hover active:bg-bg_active`}
         >
-          <TextAtom
-            className="peer font-bold mx-auto text-white leading-relaxed uppercase"
-            type={TextAtomEnum.enum_h5}
-          >
-            {children}
-          </TextAtom>
+          {children}
         </button>
       );
     }

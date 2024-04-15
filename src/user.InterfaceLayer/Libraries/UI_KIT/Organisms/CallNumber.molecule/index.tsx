@@ -43,10 +43,9 @@ const CallNumber: React.FC<CallNumberProps> = () => {
     setIsShowModal(true);
   }, [items, phoneNumber, submitOrder]);
 
-  // Close modal and clear cart
   const closeModalAndClearCart = useCallback(() => {
     setIsShowModal(false);
-    clearCart(); // Clear the cart only after the modal is closed
+    clearCart();
   }, [clearCart, setIsShowModal]);
 
   return (
@@ -79,7 +78,9 @@ const CallNumber: React.FC<CallNumberProps> = () => {
             type={ButtonAtomEnum.enum_buyButton}
             onClick={handleSubmit}
           >
-            <TextAtom type={TextAtomEnum.enum_h3}>Заказать</TextAtom>
+            <TextAtom type={TextAtomEnum.enum_h3} className="text-white">
+              Заказать
+            </TextAtom>
           </ButtonAtom>
         </div>
       </div>

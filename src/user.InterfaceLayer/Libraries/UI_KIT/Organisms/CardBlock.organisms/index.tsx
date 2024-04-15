@@ -103,7 +103,11 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
           type={ButtonAtomEnum.enum_buyButton}
           className="h-[60px]"
         >
-          <TextAtom isLoading={isLoading} type={TextAtomEnum.enum_h3}>
+          <TextAtom
+            isLoading={isLoading}
+            type={TextAtomEnum.enum_h3}
+            className="text-white"
+          >
             Купить
           </TextAtom>
         </ButtonAtom>
@@ -114,7 +118,11 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
             onClick={handleDecreaseQuantity}
             type={ButtonAtomEnum.enum_buyButton}
           >
-            <TextAtom isLoading={isLoading} type={TextAtomEnum.enum_h2}>
+            <TextAtom
+              isLoading={isLoading}
+              type={TextAtomEnum.enum_h2}
+              className="text-white"
+            >
               -
             </TextAtom>
           </ButtonAtom>
@@ -124,7 +132,7 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
             <InputAtom
               isLoading={isLoading}
               type={InputAtomEnum.NUMBER}
-              className="h-[60px] hover:bg-bg_hover active:bg-bg_active text-white w-full text-center bg-transparent text-h3"
+              className={`${mobile.inputCount} hover:bg-bg_hover active:bg-bg_active text-white w-full text-center bg-transparent text-h3`}
               value={Number(quantity)}
               onChange={handleQuantityChange}
             />
@@ -135,7 +143,9 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
             onClick={handleIncreaseQuantity}
             type={ButtonAtomEnum.enum_buyButton}
           >
-            <TextAtom type={TextAtomEnum.enum_h2}>+</TextAtom>
+            <TextAtom type={TextAtomEnum.enum_h2} className="text-white">
+              +
+            </TextAtom>
           </ButtonAtom>
         </div>
       )}

@@ -1,6 +1,5 @@
 import React from "react";
 import { globalContainer } from "@/user.InterfaceLayer/constants/styles/CommonStyles";
-import dynamic from "next/dynamic";
 import TextAtom from "@/user.InterfaceLayer/Libraries/UI_KIT/Atoms/Text.Atom";
 import TextAtomEnum from "@/user.InterfaceLayer/Libraries/UI_KIT/Atoms/Text.Atom/enum";
 

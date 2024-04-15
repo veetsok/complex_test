@@ -1,4 +1,3 @@
-// useOrder.ts
 import { useCallback } from "react";
 
 const baseUrl = "http://o-complex.com:1337/order";

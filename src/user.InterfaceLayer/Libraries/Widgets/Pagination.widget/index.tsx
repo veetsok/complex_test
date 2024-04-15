@@ -29,7 +29,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           type={ButtonAtomEnum.enum_buyButton}
           onClick={() => handlePageChange(pageNumber)}
           disabled={currentPage === pageNumber}
-          className="max-w-[100px]"
+          className="max-w-[100px] text-white"
         >
           {pageNumber}
         </ButtonAtom>

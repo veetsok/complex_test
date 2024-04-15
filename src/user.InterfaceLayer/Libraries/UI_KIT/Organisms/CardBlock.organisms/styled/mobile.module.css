@@ -1,3 +1,7 @@
+.inputCount {
+  height: 60px;
+}
+
 @media (max-width: 1024px) {
   .title {
     height: 30px;
