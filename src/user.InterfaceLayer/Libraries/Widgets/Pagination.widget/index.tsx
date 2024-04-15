@@ -5,8 +5,8 @@ import { ProductsResponse } from "@/business.InterfaceLayer/hooks/store/useProdu
 
 interface PaginationProps {
   products?: ProductsResponse;
-  page?: any;
-  setPage?: any;
+  page?: number;
+  setPage?: (page: number) => void;
 }
 
 const Pagination: React.FC<PaginationProps> = (props) => {
@@ -14,7 +14,8 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 
   const totalPages = products?.total ? Math.ceil(products.total / 21) : 0;
 
-  const handleGoToPage = (pageNumber: number) => setPage(pageNumber);
+  const handleGoToPage = (pageNumber: number) =>
+    setPage ? setPage(pageNumber) : undefined;
 
   return (
     <div className="flex gap-3 mt-10">

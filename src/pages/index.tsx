@@ -26,7 +26,7 @@ export default function Home() {
       <ReviewsWidget isLoading={reviewsIsLoading} items={reviews} />
       <CartWidget />
       <ProductsWidget isLoading={productIsLoading} products={products} />
-      <Pagination />
+      <Pagination page={page} setPage={setPage} products={products} />
     </main>
   );
 }
