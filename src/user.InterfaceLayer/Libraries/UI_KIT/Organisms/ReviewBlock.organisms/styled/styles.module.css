@@ -1,6 +1,14 @@
 .rewiew p:last-child {
   height: 80px;
+  overflow: hidden;
 }
 
-@media not all and (min-width: 1024px) {
+@media (max-width: 1024px) {
+  .rewiew p:last-child {
+    height: 65px;
+    overflow: hidden;
+  }
+  .rewiew p {
+    font-size: 14px;
+  }
 }
