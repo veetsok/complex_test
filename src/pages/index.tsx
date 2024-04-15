@@ -22,8 +22,9 @@ export default function Home() {
     isError: reviewsError,
   } = useReviews();
 
-  const handleNextPage = () => setPage((prevPage) => prevPage + 1);
-  const handlePrevPage = () => setPage((prevPage) => Math.max(prevPage - 1, 1));
+  const totalPages = products?.total ? Math.ceil(products.total / 21) : 0;
+
+  const handleGoToPage = (pageNumber: number) => setPage(pageNumber);
 
   return (
     <main className={`${globalContainer}`}>
@@ -31,21 +32,17 @@ export default function Home() {
       <CartWidget />
       <ProductsWidget isLoading={productIsLoading} products={products} />
       <div className="flex gap-3 mt-10">
-        <ButtonAtom
-          type={ButtonAtomEnum.enum_buyButton}
-          onClick={handlePrevPage}
-          disabled={page === 1}
-          className="max-w-[100px]"
-        >
-          Previous
-        </ButtonAtom>
-        <ButtonAtom
-          type={ButtonAtomEnum.enum_buyButton}
-          onClick={handleNextPage}
-          className="max-w-[100px]"
-        >
-          Next
-        </ButtonAtom>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <ButtonAtom
+            key={index}
+            type={ButtonAtomEnum.enum_buyButton}
+            onClick={() => handleGoToPage(index + 1)}
+            disabled={page === index + 1}
+            className="max-w-[100px]"
+          >
+            {index + 1}
+          </ButtonAtom>
+        ))}
       </div>
     </main>
   );
