@@ -1,0 +1,6 @@
+@media (max-width: 1024px) {
+  .block {
+    justify-content: space-between;
+    max-width: none;
+  }
+}

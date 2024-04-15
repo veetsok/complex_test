@@ -4,6 +4,7 @@ import TextAtomEnum from "../../UI_KIT/Atoms/Text.Atom/enum";
 import useCartStore from "@/business.InterfaceLayer/hooks/store/localstorage/useCartStore";
 import CartBlockOrganisms from "../../UI_KIT/Organisms/CartBlock.organisms";
 import CallNumber from "../../UI_KIT/Organisms/CallNumber.molecule";
+import mobile from "./styled/mobile.module.css";
 
 interface CartWidgetProps {}
 
@@ -33,7 +34,7 @@ const CartWidget: React.FC<CartWidgetProps> = () => {
       ) : (
         <>
           <TextAtom type={TextAtomEnum.enum_h2}>Добавленные товары</TextAtom>
-          <div className="flex gap-[40px]">
+          <div className={`${mobile.block} flex gap-[40px]`}>
             <div className="flex flex-col gap-3">{memoizedItems}</div>
             <div className="flex flex-col gap-3 text-center">
               <TextAtom type={TextAtomEnum.enum_h2}>Итого</TextAtom>
