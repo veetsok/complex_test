@@ -1,0 +1,17 @@
+@media (max-width: 1024px) {
+  .title {
+    height: 30px;
+  }
+  .description {
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    height: 25px;
+  }
+  .description {
+    height: 40px;
+  }
+}

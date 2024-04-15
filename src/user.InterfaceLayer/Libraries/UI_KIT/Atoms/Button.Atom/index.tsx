@@ -5,6 +5,7 @@ import { ButtonAtomProps } from "./type";
 import TextAtom from "../Text.Atom";
 import TextAtomEnum from "../Text.Atom/enum";
 import SkeletonAtom from "../Skeleton.Atom";
+import mobile from "./styled/mobile.module.css";
 
 const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
   const { children, className, onClick, type, isLoading, disabled, style } =
@@ -23,7 +24,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
             e.preventDefault();
             onClick?.(e);
           }}
-          className={`${className} inline-block bg-black rounded-md w-full py-3 h-[80px] xl:h-[60px] lg:h-[50px] md:h-[45px] sm:h-[40px] 2sm:h-[35px] 3sm:h-[35px] hover:bg-bg_hover active:bg-bg_active`}
+          className={`${className} inline-block bg-black rounded-md w-full py-3 ${mobile.btn} hover:bg-bg_hover active:bg-bg_active`}
         >
           <TextAtom
             className="peer font-bold mx-auto text-white leading-relaxed uppercase"

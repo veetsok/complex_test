@@ -10,6 +10,7 @@ import useCartStore from "@/business.InterfaceLayer/hooks/store/localstorage/use
 import InputAtom from "../../Atoms/Input.Atom";
 import { InputAtomEnum } from "../../Atoms/Input.Atom/enum";
 import SkeletonAtom from "../../Atoms/Skeleton.Atom";
+import mobile from "./styled/mobile.module.css";
 
 const MAX_TITLE_LENGTH = 50;
 const MAX_DESCRIPTION_LENGTH = 150;
@@ -77,14 +78,14 @@ const CardBlock: React.FC<CardBlockProps> = (props) => {
       <TextAtom
         isLoading={isLoading}
         type={TextAtomEnum.enum_h4}
-        className="h-[40px] overflow-hidden"
+        className={`h-[40px] ${mobile.title} overflow-hidden`}
       >
         {truncateText(sanitize(title), MAX_TITLE_LENGTH)}
       </TextAtom>
       <TextAtom
         isLoading={isLoading}
         type={TextAtomEnum.enum_h4}
-        className="h-[80px] overflow-hidden"
+        className={`h-[80px] overflow-hidden ${mobile.description}`}
       >
         {truncateText(sanitize(description), MAX_DESCRIPTION_LENGTH)}
       </TextAtom>
