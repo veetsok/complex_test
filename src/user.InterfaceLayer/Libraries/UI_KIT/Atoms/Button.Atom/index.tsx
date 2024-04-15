@@ -24,7 +24,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
             e.preventDefault();
             onClick?.(e);
           }}
-          className={`${className} inline-block bg-black rounded-md w-full py-3 ${mobile.btn} hover:bg-bg_hover active:bg-bg_active`}
+          className={`${className} inline-block bg-black rounded-[15px] w-full py-3 ${mobile.btn} hover:bg-bg_hover active:bg-bg_active`}
         >
           <TextAtom
             className="peer font-bold mx-auto text-white leading-relaxed uppercase"
@@ -37,7 +37,9 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
     }
     default: {
       return (
-        <button className="bg-red-700 rounded-md w-full py-3">Ошибка</button>
+        <button className="bg-red-700 rounded-[15px] w-full py-3">
+          Ошибка
+        </button>
       );
     }
   }

@@ -8,6 +8,7 @@ import { useOrder } from "@/business.InterfaceLayer/hooks/store/useOrder";
 import ModalWindow from "../../Cells/ModalWindow.cells";
 import TextAtom from "../../Atoms/Text.Atom";
 import TextAtomEnum from "../../Atoms/Text.Atom/enum";
+import mobile from "./styled/mobile.module.css";
 
 interface CallNumberProps {}
 
@@ -57,12 +58,14 @@ const CallNumber: React.FC<CallNumberProps> = () => {
             {phoneError}
           </TextAtom>
         )}
-        <div className="flex justify-between">
+        <div
+          className={`flex justify-between gap-[17px] ${mobile.CallNumberBlock}`}
+        >
           <div
             className={
               phoneError
-                ? "border boder-solid border-red-500 flex items-center bg-black gap-5 rounded-[15px] py-2 px-4 max-w-[400px]"
-                : "flex items-center bg-black gap-5 rounded-[15px] py-2 px-4 max-w-[400px]"
+                ? `h-[60px] border-2 boder-solid border-red-500 flex items-center bg-black gap-5 rounded-[15px] py-2 px-4 w-full`
+                : `h-[60px] flex items-center bg-black gap-5 rounded-[15px] py-2 px-4 w-full`
             }
           >
             <InputAtom
@@ -73,7 +76,6 @@ const CallNumber: React.FC<CallNumberProps> = () => {
             />
           </div>
           <ButtonAtom
-            className="max-w-[268px]"
             type={ButtonAtomEnum.enum_buyButton}
             onClick={handleSubmit}
           >
