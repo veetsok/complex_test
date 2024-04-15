@@ -5,7 +5,7 @@ import { Reviews } from "./type";
 const baseUrl = "http://o-complex.com:1337/reviews";
 
 export function useReviews() {
-  const { data, isLoading, isError, isFetching } = useQuery<Reviews[]>(
+  const { data, isLoading, isError } = useQuery<Reviews[]>(
     "reviews",
     async () => {
       const response = await fetch(baseUrl);
@@ -18,5 +18,5 @@ export function useReviews() {
 
   const memoizedData = useMemo(() => data || [], [data]);
 
-  return { reviews: memoizedData, isLoading, isError, isFetching };
+  return { reviews: memoizedData, isLoading, isError };
 }

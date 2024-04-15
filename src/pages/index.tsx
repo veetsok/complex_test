@@ -7,6 +7,7 @@ import ReviewsWidget from "@/user.InterfaceLayer/Libraries/Widgets/Reviews.widge
 import Pagination from "@/user.InterfaceLayer/Libraries/Widgets/Pagination.widget";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import EmptyBlock from "@/user.InterfaceLayer/Libraries/Widgets/EmptyBlock.widget";
 
 export default function Home() {
   const router = useRouter();
@@ -18,7 +19,6 @@ export default function Home() {
     products,
     isLoading: productIsLoading,
     isError: productIsError,
-    isFetching: productIsFetching,
   } = useProducts(pageNumber, 21);
 
   const {
@@ -36,16 +36,25 @@ export default function Home() {
     setCurrentPage(pageNumber);
   };
 
+  const hasError = productIsError && reviewsError;
+  const isDataLoaded = !productIsLoading && !reviewsIsLoading;
+
   return (
     <main className={`${globalContainer}`}>
-      <ReviewsWidget isLoading={reviewsIsLoading} items={reviews} />
-      <CartWidget />
-      <ProductsWidget isLoading={productIsLoading} products={products} />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={products?.total ? Math.ceil(products.total / 21) : 0}
-        onPageChange={handlePageChange}
-      />
+      {hasError || !isDataLoaded ? (
+        <EmptyBlock />
+      ) : (
+        <>
+          <ReviewsWidget isLoading={reviewsIsLoading} items={reviews} />
+          <CartWidget />
+          <ProductsWidget isLoading={productIsLoading} products={products} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={products?.total ? Math.ceil(products.total / 21) : 0}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </main>
   );
 }
