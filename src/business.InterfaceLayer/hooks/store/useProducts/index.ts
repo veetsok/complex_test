@@ -1,4 +1,3 @@
-// useProducts.ts
 import { useQuery } from "react-query";
 import { ProductsResponse } from "./type";
 

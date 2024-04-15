@@ -2,9 +2,19 @@ import React, { useMemo } from "react";
 import { ProductsWidgetProps } from "./type";
 import CardBlockOrganisms from "../../UI_KIT/Organisms/CardBlock.organisms";
 import heightChild from "./styled/styles.module.css";
-import useCartStore from "@/business.InterfaceLayer/hooks/store/localstorage/useCartStore";
 
-const ProductsWidget: React.FC<ProductsWidgetProps> = ({ products }) => {
+const ProductsWidget: React.FC<ProductsWidgetProps> = (props) => {
+  const { products, isLoading } = props;
+
+  const loadingCards = useMemo(
+    () =>
+      isLoading &&
+      Array.from({ length: 9 }).map((_, index) => (
+        <CardBlockOrganisms key={index} isLoading={true} />
+      )),
+    [isLoading]
+  );
+
   const memoizedProducts = useMemo(() => {
     return products?.products.map((product, index) => (
       <CardBlockOrganisms
@@ -22,6 +32,7 @@ const ProductsWidget: React.FC<ProductsWidgetProps> = ({ products }) => {
     <div
       className={`grid grid-cols-3 gap-7 mt-10 ${heightChild.height_rowCustom}`}
     >
+      {loadingCards}
       {memoizedProducts}
     </div>
   );

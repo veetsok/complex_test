@@ -2,4 +2,5 @@ import { ProductsResponse } from "@/business.InterfaceLayer/hooks/store/useProdu
 
 export interface ProductsWidgetProps {
   products?: ProductsResponse;
+  isLoading?: boolean;
 }

@@ -1,8 +1,9 @@
 export interface CardBlockProps {
   image_url?: string;
-  title: string;
+  title?: string;
   description?: string;
-  price: number;
+  price?: number;
   onClick?: (id: number) => void;
-  id: number;
+  id?: number;
+  isLoading?: boolean;
 }
